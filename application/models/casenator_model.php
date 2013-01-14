@@ -46,7 +46,7 @@ class Casenator_model extends CI_Model
             ->result();
 
         foreach ($row_arr as $row) {
-            $c = new casenat_model();
+            $c = new Casenator_model();
 
             $c->id_casenat = $row->id_casenat;
             $c->nama_casenat = $row->nama_casenat;
