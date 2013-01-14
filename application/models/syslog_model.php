@@ -12,10 +12,21 @@ class Syslog_model extends CI_Model
     public $aksi = null;
     /* date */
     public $waktu = null;
-    
+
     public function __construct()
     {
         parent::__construct();
         $this->load->database();
+    }
+
+    public function log_kejadian($NIM, $aksi)
+    {
+        $data = array(
+            'NIM' => $NIM,
+            'aksi' => $aksi,
+        );
+        
+        $this->db
+            ->insert($this->_table, $data);
     }
 }
