@@ -36,8 +36,8 @@ class Pemilih_model extends CI_Model
     {
         $this->NIM = $NIM;
         $this->salt = md5($NIM);
-        $pass = substr(strrev(sha1($this->salt . $this->password)), 0, 32);
         $this->password = $pass;
+        $pass = substr(strrev(sha1($this->salt . $this->password)), 0, 32);
 
         $data = array(
             'NIM' => $this->NIM,
