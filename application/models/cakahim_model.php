@@ -20,8 +20,8 @@ class Cakahim_model extends CI_Model
     public function get_by_id($id)
     {
         $row_arr = $this->db
-            ->get(self::TABLE)
             ->where('id_cakahim', $id)
+            ->get(self::TABLE)
             ->result();
 
         if (!$row_arr) {
@@ -84,5 +84,17 @@ class Cakahim_model extends CI_Model
             ->insert(self::TABLE, $data);
 
         return $this;
+    }
+
+    public function delete($id)
+    {
+        $this->db
+            ->where('id_cakahim', $id)
+            ->delete(self::TABLE);
+    }
+
+    public function empty_table()
+    {
+        $this->db->empty_table(self::TABLE);
     }
 }

@@ -18,6 +18,28 @@ class Pemilih_model extends CI_Model
         parent::__construct();
         $this->load->database();
     }
+    
+    public function get_all()
+    {
+        $pemilih_arr = array();
+
+        $row_arr = $this->db
+            ->get(self::TABLE)
+            ->result();
+
+        foreach ($row_arr as $row) {
+            $p = new Pemilih_model();
+
+            $p->NIM = $row->NIM;
+            $p->salt = $row->salt;
+            $p->password = $row->password;
+            $p->has_vote = $row->has_vote;
+
+            $pemilih_arr[] = $p;
+        }
+
+        return $pemilih_arr;
+    }
 
     public function get($NIM, $password)
     {
@@ -36,13 +58,13 @@ class Pemilih_model extends CI_Model
     {
         $this->NIM = $NIM;
         $this->salt = md5($NIM);
-        $this->password = $pass;
+        $this->password = $password;
         $pass = substr(strrev(sha1($this->salt . $this->password)), 0, 32);
 
         $data = array(
             'NIM' => $this->NIM,
             'salt' => $this->salt,
-            'password' => $this->password,
+            'password' => $pass,
             'has_vote' => $this->has_vote,
         );
 
@@ -67,8 +89,8 @@ class Pemilih_model extends CI_Model
         $pass = substr(strrev(sha1($this->salt . $this->password)), 0, 32);
 
         $row_arr = $this->db
-            ->get(self::TABLE)
             ->where('NIM', $this->NIM)
+            ->get(self::TABLE)        
             ->result();
 
         if (!$row_arr) {
@@ -78,10 +100,16 @@ class Pemilih_model extends CI_Model
         $row = $row_arr[0];
 
         if ($pass == $row->password) {
+            $this->password = $pass . " ({$this->password})";
             $this->has_vote = $row->has_vote;
             return true;
         } else {
             return false;
         }
+    }
+
+    public function empty_table()
+    {
+        $this->db->empty_table(self::TABLE);
     }
 }
