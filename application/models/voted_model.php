@@ -2,7 +2,7 @@
 
 class Voted_model extends CI_Model
 {
-    private $_table = 'voted';
+    const TABLE = 'voted';
 
     /* string */
     public $vote_name = null;
@@ -26,6 +26,6 @@ class Voted_model extends CI_Model
         );
 
         $this->db
-            ->insert($this->_table, $data);
+            ->insert(self::TABLE, $data);
     }
 }

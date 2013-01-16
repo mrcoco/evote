@@ -2,7 +2,7 @@
 
 class Syslog_model extends CI_Model
 {
-    private $_table = 'syslog';
+    const TABLE = 'syslog';
 
     /* int, pkey */
     public $id_log = 0;
@@ -27,6 +27,6 @@ class Syslog_model extends CI_Model
         );
         
         $this->db
-            ->insert($this->_table, $data);
+            ->insert(self::TABLE, $data);
     }
 }

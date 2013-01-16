@@ -2,7 +2,7 @@
 
 class Kotak_model extends CI_Model
 {
-    private $_table = 'kotak';
+    const TABLE = 'kotak';
 
     /* string */
     public $vote_name = null;
@@ -26,7 +26,7 @@ class Kotak_model extends CI_Model
         );
 
         $this->db
-            ->insert($this->_table, $data);
+            ->insert(self::TABLE, $data);
     }
     
     public function ambil_suara()

@@ -2,7 +2,7 @@
 
 class Pemilih_model extends CI_Model
 {
-    private $_table = 'pemilih';
+    const TABLE = 'pemilih';
 
     /* int, pkey */
     public $NIM = 0;
@@ -46,7 +46,7 @@ class Pemilih_model extends CI_Model
             'has_vote' => $this->has_vote,
         );
 
-        $this->db->insert($this->_table, $data);
+        $this->db->insert(self::TABLE, $data);
 
         return $this;
     }
@@ -57,7 +57,7 @@ class Pemilih_model extends CI_Model
 
         $this->db
             ->where('NIM', $this->NIM)
-            ->update($this->_table, array('has_vote' => $this->has_vote));
+            ->update(self::TABLE, array('has_vote' => $this->has_vote));
 
         return $this;
     }
@@ -67,7 +67,7 @@ class Pemilih_model extends CI_Model
         $pass = substr(strrev(sha1($this->salt . $this->password)), 0, 32);
 
         $row_arr = $this->db
-            ->get($this->_table)
+            ->get(self::TABLE)
             ->where('NIM', $this->NIM)
             ->result();
 

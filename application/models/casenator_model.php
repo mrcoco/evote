@@ -2,7 +2,7 @@
 
 class Casenator_model extends CI_Model
 {
-    private $_table = 'casenator';
+    const TABLE = 'casenator';
 
     /* int, pkey */
     public $id_casenat = 0;
@@ -20,7 +20,7 @@ class Casenator_model extends CI_Model
     public function get_by_id($id)
     {
         $row_arr = $this->db
-            ->get($this->_table)
+            ->get(self::TABLE)
             ->where('id_casenat', $id)
             ->result();
 
@@ -42,7 +42,7 @@ class Casenator_model extends CI_Model
         $casenat_arr = array();
 
         $row_arr = $this->db
-            ->get($this->_table)
+            ->get(self::TABLE)
             ->result();
 
         foreach ($row_arr as $row) {
@@ -64,7 +64,7 @@ class Casenator_model extends CI_Model
 
         $this->db
             ->where('id_casenat', $this->id_casenat)
-            ->update($this->_table, array('jumlah_vote' => $this->jumlah_vote));
+            ->update(self::TABLE, array('jumlah_vote' => $this->jumlah_vote));
 
         return $this;
     }
@@ -81,7 +81,7 @@ class Casenator_model extends CI_Model
         );
 
         $this->db
-            ->insert($this->_table, $data);
+            ->insert(self::TABLE, $data);
 
         return $this;
     }

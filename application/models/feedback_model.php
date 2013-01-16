@@ -2,7 +2,7 @@
 
 class Feedback_model extends CI_Model
 {
-    private $_table = 'feedback';
+    const TABLE = 'feedback';
 
     /* int, pkey */
     public $id_feedback = 0;
@@ -25,6 +25,6 @@ class Feedback_model extends CI_Model
         );
         
         $this->db
-            ->insert($this->_table, $data);
+            ->insert(self::TABLE, $data);
     }
 }
