@@ -100,7 +100,7 @@ class Pemilih_model extends CI_Model
         $row = $row_arr[0];
 
         if ($pass == $row->password) {
-            $this->password = $pass . " ({$this->password})";
+            $this->password = $pass;
             $this->has_vote = $row->has_vote;
             return true;
         } else {

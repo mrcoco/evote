@@ -17,7 +17,7 @@ class Voted_model extends CI_Model
         $this->load->database();
     }
 
-    public function masukkan_hasil($voter, $cakahim, $casenator)
+    public function masukkan_hasil($voter, $cakahim, $casenat)
     {
         $data = array(
             'vote_name' => $voter,
