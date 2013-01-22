@@ -2,6 +2,7 @@
 class Cakahim extends CI_Controller
 {
     const CNAME = 'model_tests/cakahim';
+    const VNAME = 'test_views/model_test';
 
     public function __construct()
     {
@@ -39,7 +40,7 @@ class Cakahim extends CI_Controller
     public function index()
     {
         $cakahim_arr = $this->cakahim->get_all();
-        $this->load->view('test_view', array(
+        $this->load->view(self::VNAME, array(
             'output_code' => $cakahim_arr,
             'links' => $this->links)
         );
@@ -48,7 +49,7 @@ class Cakahim extends CI_Controller
     public function get($id)
     {
         $cakahim = $this->cakahim->get_by_id($id);
-        $this->load->view('test_view', array(
+        $this->load->view(self::VNAME, array(
             'output_code' => $cakahim,
             'links' => $this->links)
         );

@@ -2,6 +2,7 @@
 class Pemilih extends CI_Controller
 {
     const CNAME = 'model_tests/pemilih';
+    const VNAME = 'test_views/model_test';
 
     public function __construct()
     {
@@ -44,7 +45,7 @@ class Pemilih extends CI_Controller
     public function index()
     {
         $pemilih_arr = $this->pemilih->get_all();
-        $this->load->view('test_view', array(
+        $this->load->view(self::VNAME, array(
             'output_code' => $pemilih_arr,
             'links' => $this->links)
         );
@@ -53,7 +54,7 @@ class Pemilih extends CI_Controller
     public function get($NIM, $password)
     {
         $pemilih = $this->pemilih->get($NIM, $password);
-        $this->load->view('test_view', array(
+        $this->load->view(self::VNAME, array(
             'output_code' => $pemilih,
             'links' => $this->links)
         );

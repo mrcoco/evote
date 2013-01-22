@@ -2,6 +2,7 @@
 class Casenat extends CI_Controller
 {
     const CNAME = 'model_tests/casenat';
+    const VNAME = 'test_views/model_test';
 
     public function __construct()
     {
@@ -38,7 +39,7 @@ class Casenat extends CI_Controller
     public function index()
     {
         $casenat_arr = $this->casenat->get_all();
-        $this->load->view('test_view', array(
+        $this->load->view(self::VNAME, array(
             'output_code' => $casenat_arr,
             'links' => $this->links)
         );
@@ -47,7 +48,7 @@ class Casenat extends CI_Controller
     public function get($id)
     {
         $casenat = $this->casenat->get_by_id($id);
-        $this->load->view('test_view', array(
+        $this->load->view(self::VNAME, array(
             'output_code' => $casenat,
             'links' => $this->links)
         );
