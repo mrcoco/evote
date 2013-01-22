@@ -16,6 +16,7 @@ class Vote extends CI_Controller
         $this->load->model('casenator_model');
         $this->load->model('kotak_model');
         $this->load->model('voted_model');
+
         $this->pemilih = new Pemilih_model();
         $this->cakahim = new Cakahim_model();
         $this->casenat = new Casenator_model();
@@ -56,7 +57,7 @@ class Vote extends CI_Controller
             redirect(site_url(self::VOTE_INDEX));
         }
     }
-    
+
     private function _vote()
     {
         $cakahim_id = $this->input->post('cakahim');

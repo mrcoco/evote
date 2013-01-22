@@ -2,7 +2,7 @@
 <html>
     <body>
         <div>
-            <form method="post" action="<?php echo site_url('vote_test/vote'); ?>">
+            <form method="post" action="<?php echo site_url('vote/vote'); ?>">
                 <select name="cakahim">
                     <option value="null">SELECT CAKAHIM</option>
                     <?php foreach ($cakahim_all as $c): ?>
